@@ -1,0 +1,50 @@
+class Solution {
+public:
+    int minMaxDifference(int num) {
+
+        string s = to_string(num);
+        string maxi="";
+        string mini="";
+
+        bool b = true;
+        char c = '9';
+
+        for(int i=0;i<s.size();i++)
+        {
+            if(s[i]!='9' && b==true) {
+                maxi+="9";
+                b=false;
+                c=s[i];
+            }
+            else if(s[i]!='9' && b==false && s[i]==c)
+            {
+                maxi+="9";
+            }
+            else{
+                maxi+=s[i];
+            }
+        }
+        b=true;
+        char ch='0';
+        for(int i=0;i<s.size();i++)
+        {
+            if(s[i]!='0' && b==true) {
+                mini+="0";
+                b=false;
+                ch=s[i];
+            }
+            else if(s[i]!='0' && b==false && s[i]==ch)
+            {
+                mini+="0";
+            }
+            else{
+                mini+=s[i];
+            }
+        }    
+        int maxVal = stoi(maxi);
+        int minVal = stoi(mini);
+
+        return maxVal-minVal;    
+        
+    }
+};
